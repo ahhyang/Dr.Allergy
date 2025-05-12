@@ -4,17 +4,17 @@ class AppTheme {
   // Minimalist gray and black theme with accent colors
   static final ThemeData radioAppTheme = ThemeData(
     useMaterial3: true,
-    colorScheme: ColorScheme.dark(
+    colorScheme: const ColorScheme.dark(
       brightness: Brightness.dark,
-      primary: const Color(0xFF00D1FF),  // Bright blue accent
+      primary: Color(0xFF00D1FF),  // Bright blue accent
       onPrimary: Colors.white,
-      secondary: const Color(0xFF00D1FF),  // Bright blue accent
+      secondary: Color(0xFF00D1FF),  // Bright blue accent
       onSecondary: Colors.white,
-      tertiary: const Color(0xFF9E9E9E),   // Gray accent
-      error: const Color(0xFFFF2D55),      // Bright red for alerts
-      surface: const Color(0xFF121212),    // Dark gray surface
+      tertiary: Color(0xFF9E9E9E),   // Gray accent
+      error: Color(0xFFFF2D55),      // Bright red for alerts
+      surface: Color(0xFF121212),    // Dark gray surface
       onSurface: Colors.white,
-      background: const Color(0xFF000000), // Pure black background
+      background: Color(0xFF000000), // Pure black background
       onBackground: Colors.white,
     ),
     scaffoldBackgroundColor: const Color(0xFF000000),
@@ -266,14 +266,14 @@ class AppTheme {
 
     // Switch theme
     switchTheme: SwitchThemeData(
-      thumbColor: MaterialStateProperty.resolveWith<Color>((states) {
-        if (states.contains(MaterialState.selected)) {
+      thumbColor: WidgetStateProperty.resolveWith<Color>((states) {
+        if (states.contains(WidgetState.selected)) {
           return const Color(0xFF00D1FF);
         }
         return const Color(0xFFBDBDBD);
       }),
-      trackColor: MaterialStateProperty.resolveWith<Color>((states) {
-        if (states.contains(MaterialState.selected)) {
+      trackColor: WidgetStateProperty.resolveWith<Color>((states) {
+        if (states.contains(WidgetState.selected)) {
           return const Color(0xFF00D1FF).withOpacity(0.5);
         }
         return const Color(0xFF757575);
@@ -282,13 +282,13 @@ class AppTheme {
 
     // Checkbox theme
     checkboxTheme: CheckboxThemeData(
-      fillColor: MaterialStateProperty.resolveWith<Color>((states) {
-        if (states.contains(MaterialState.selected)) {
+      fillColor: WidgetStateProperty.resolveWith<Color>((states) {
+        if (states.contains(WidgetState.selected)) {
           return const Color(0xFF00D1FF);
         }
         return Colors.transparent;
       }),
-      checkColor: MaterialStateProperty.all(Colors.black),
+      checkColor: WidgetStateProperty.all(Colors.black),
       side: BorderSide(color: Colors.white.withOpacity(0.6)),
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(4),

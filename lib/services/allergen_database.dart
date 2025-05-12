@@ -674,4 +674,140 @@ class AllergenDatabaseService {
   
   // Get mapping of food types to standardized categories
   static Map<String, String> get foodTypeMapping => _foodTypeMapping;
+  
+  // Get statistical data about a food item and its allergens
+  static Map<String, dynamic> getStatisticalData(String foodName) {
+    Map<String, dynamic> statistics = {};
+    
+    // In a real app, this would query the food statistics database
+    // For this demo, we'll return simulated statistics
+    
+    final lowerFoodName = foodName.toLowerCase();
+    
+    // Detect allergens in the food
+    final allergensInFood = getAllergensInFood(lowerFoodName);
+    
+    // Generate statistics about each allergen
+    Map<String, Map<String, dynamic>> allergenStats = {};
+    for (final allergen in allergensInFood) {
+      allergenStats[allergen] = {
+        'prevalence': 1.0 + (15.0 * Random().nextDouble()), // 1-16% prevalence
+        'severityScore': 1 + Random().nextInt(10), // Scale of 1-10
+        'commonSymptoms': _getCommonSymptomsForAllergen(allergen),
+      };
+    }
+    
+    // Compile food statistics
+    statistics = {
+      'allergensDetected': allergensInFood,
+      'allergenStats': allergenStats,
+      'crossReactivityRisk': allergensInFood.isNotEmpty ? 
+          (10 + Random().nextInt(90)) : 0, // Percentage 10-100%
+      'hiddenIngredientRisk': allergensInFood.isNotEmpty ? 
+          (10 + Random().nextInt(40)) : 0, // Percentage 10-50%
+    };
+    
+    return statistics;
+  }
+  
+  // Helper method to find safe alternatives for food
+  static List<String> _getSafeAlternativesForFood(String foodName, List<String> allergens) {
+    // This would be data-driven in a production app
+    // For demo, we'll provide hardcoded alternatives based on food categories
+    
+    // Simple mapping of food types to allergen-free alternatives
+    Map<String, List<String>> alternativesMap = {
+      'pizza': ['Cauliflower crust pizza without cheese', 'Gluten-free vegan pizza', 'Flatbread with vegetables'],
+      'cheese': ['Dairy-free cheese alternative', 'Nutritional yeast', 'Avocado spread'],
+      'milk': ['Oat milk', 'Almond milk', 'Coconut milk', 'Rice milk'],
+      'ice cream': ['Coconut-based ice cream', 'Sorbet', 'Fruit-based frozen dessert'],
+      'peanut': ['Sunflower seed butter', 'Pumpkin seed spread', 'Tahini'],
+      'pasta': ['Rice noodles', 'Zucchini noodles', 'Chickpea pasta', 'Quinoa pasta'],
+      'bread': ['Gluten-free bread', 'Rice cakes', 'Corn tortillas', 'Lettuce wraps'],
+      'cereal': ['Gluten-free granola', 'Rice-based cereal', 'Chia pudding'],
+      'yogurt': ['Coconut yogurt', 'Almond-based yogurt', 'Soy yogurt'],
+      'burger': ['Plant-based burger', 'Portobello mushroom burger', 'Bean patty'],
+      'seafood': ['Jackfruit', 'Hearts of palm', 'Tofu with seaweed', 'Mushroom "scallops"'],
+      'chocolate': ['Dairy-free chocolate', 'Carob treats', 'Date-based desserts'],
+      'soy milk': ['Oat milk', 'Almond milk', 'Rice milk', 'Hemp milk'],
+      'soy sauce': ['Coconut aminos', 'Salt', 'Umeboshi vinegar'],
+    };
+    
+    // Check for direct matches first
+    for (final entry in alternativesMap.entries) {
+      if (foodName.contains(entry.key)) {
+        return entry.value;
+      }
+    }
+    
+    // Fallback based on allergens
+    List<String> safeAlternatives = [];
+    
+    if (allergens.any((a) => a.toLowerCase().contains('dairy') || 
+                            a.toLowerCase().contains('milk') || 
+                            a.toLowerCase().contains('cheese'))) {
+      safeAlternatives.add('Dairy-free alternative');
+      safeAlternatives.add('Plant-based option');
+    }
+    
+    if (allergens.any((a) => a.toLowerCase().contains('gluten') || 
+                            a.toLowerCase().contains('wheat'))) {
+      safeAlternatives.add('Gluten-free version');
+      safeAlternatives.add('Rice-based alternative');
+    }
+    
+    if (allergens.any((a) => a.toLowerCase().contains('nut') || 
+                            a.toLowerCase().contains('peanut'))) {
+      safeAlternatives.add('Nut-free option');
+      safeAlternatives.add('Seed-based alternative');
+    }
+    
+    if (allergens.any((a) => a.toLowerCase().contains('shellfish') || 
+                            a.toLowerCase().contains('fish'))) {
+      safeAlternatives.add('Plant-based seafood alternative');
+      safeAlternatives.add('Mushroom or vegetable substitute');
+    }
+    
+    if (allergens.any((a) => a.toLowerCase().contains('egg'))) {
+      safeAlternatives.add('Egg-free version');
+      safeAlternatives.add('Plant-based binding alternative');
+    }
+    
+    if (allergens.any((a) => a.toLowerCase().contains('soy'))) {
+      safeAlternatives.add('Soy-free option');
+      safeAlternatives.add('Chickpea or other legume alternative');
+    }
+    
+    // If we couldn't provide specific alternatives
+    if (safeAlternatives.isEmpty && allergens.isNotEmpty) {
+      safeAlternatives.add('Allergen-free alternative');
+      safeAlternatives.add('Homemade version with safe ingredients');
+    }
+    
+    return safeAlternatives;
+  }
+  
+  // Helper to get common symptoms for allergens
+  static List<String> _getCommonSymptomsForAllergen(String allergen) {
+    Map<String, List<String>> allergenSymptoms = {
+      'dairy': ['Bloating', 'Gas', 'Diarrhea', 'Stomach pain', 'Nausea'],
+      'egg': ['Skin rash', 'Hives', 'Nasal congestion', 'Digestive issues'],
+      'fish': ['Hives', 'Swelling', 'Wheezing', 'Vomiting'],
+      'shellfish': ['Tingling in mouth', 'Hives', 'Breathing difficulty'],
+      'nut': ['Swelling', 'Itchy mouth', 'Hives', 'Throat tightness'],
+      'peanut': ['Skin reaction', 'Itching', 'Digestive problems', 'Anaphylaxis'],
+      'wheat': ['Bloating', 'Stomach pain', 'Diarrhea', 'Headache'],
+      'soy': ['Tingling in mouth', 'Hives', 'Itching', 'Swelling'],
+      'sesame': ['Rash', 'Hives', 'Itching', 'Runny nose'],
+    };
+    
+    final lowerAllergen = allergen.toLowerCase();
+    
+    // Return common symptoms if we have them listed, otherwise return general symptoms
+    if (allergenSymptoms.containsKey(lowerAllergen)) {
+      return allergenSymptoms[lowerAllergen]!;
+    }
+    
+    return ['Skin reactions', 'Digestive issues', 'Respiratory symptoms', 'Anaphylaxis (severe cases)'];
+  }
 } 

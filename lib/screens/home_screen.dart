@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import '../models/allergy_incident.dart';
 import '../services/incident_storage_service.dart';
-import '../widgets/loading_indicator.dart';
 import '../models/user_profile.dart';
 import 'dart:math' as math;
 
