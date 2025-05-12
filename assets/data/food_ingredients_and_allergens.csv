@@ -1,0 +1,47 @@
+Food Product,Main Ingredient,Sweetener,Fat/Oil,Seasoning,Allergens,Prediction
+Almond Cookies,Almonds,Sugar,Butter,Flour,"Almonds, Wheat, Dairy",Contains
+Chicken Noodle Soup,Chicken broth,None,None,Salt,"Chicken, Wheat, Celery",Contains
+Cheddar Cheese,Cheese,None,None,Salt,Dairy,Contains
+Ranch Dressing,Buttermilk,Sugar,Vegetable oil,"Garlic, herbs",Dairy,Contains
+Caramel Popcorn,Popcorn,Sugar,Butter,Salt,Dairy,Contains
+Caesar Salad,Romaine lettuce,None,Olive oil,Parmesan cheese,Dairy,Contains
+Strawberry Smoothie,Strawberries,Honey,"Yogurt (milk, cultures)",None,Dairy,Contains
+Cheese Pizza,Cheese,None,None,Tomato sauce,Dairy,Contains
+Mashed Potatoes,Potatoes,None,Butter,"Salt, Pepper",Dairy,Contains
+Greek Yogurt,"Yogurt (milk, cultures)",None,None,None,Dairy,Contains
+Omelette,Eggs,None,Butter,"Salt, pepper",Eggs,Contains
+Egg Salad,Eggs,Mayonnaise,None,"Celery, onion",Eggs,Contains
+Quiche,Eggs,None,Cheese,Vegetables,"Eggs, Dairy",Contains
+Egg Salad Sandwich,Eggs,Mayonnaise,None,"Celery, mustard","Eggs, Mustard",Contains
+Egg Fried Rice,Eggs,None,Sesame oil,Soy sauce,"Eggs, Soybeans",Contains
+Fish Sticks,Fish fillets,None,Vegetable oil,Salt,Fish,Contains
+Baked Salmon,Salmon fillet,None,Olive oil,"Lemon, herbs",Fish,Contains
+Teriyaki Salmon,Salmon,None,Vegetable oil,Teriyaki sauce,Fish,Contains
+Malabar Fish Curry,Fish,None,Coconut oil,"Tamarind, spices","Fish, Coconut",Contains
+Tuna Sandwich,Tuna,Mayonnaise,None,"Salt, Pepper","Fish, Eggs",Contains
+Milk Chocolate,Sugar,Cocoa butter,Milk powder,Vanilla extract,Milk,Contains
+Vanilla Ice Cream,Milk,Sugar,Cream,Vanilla extract,Milk,Contains
+Vanilla Yogurt,"Yogurt (milk, cultures)",Sugar,None,Vanilla extract,Milk,Contains
+Tomato Soup,Tomatoes,None,None,"Salt, Sugar",None,Does not contain
+Apple,Apples,None,None,None,None,Does not contain
+Orange Juice,Oranges,Sugar,None,None,None,Does not contain
+Greek Salad,Cucumber,None,Olive oil,Lemon juice,None,Does not contain
+Spaghetti Bolognese,Ground beef,Sugar,Olive oil,Tomato sauce,None,Contains
+Quinoa Salad,Quinoa,None,Olive oil,"Lemon juice, herbs",None,Does not contain
+Vegetable Stir-Fry,Mixed vegetables,None,Vegetable oil,Soy sauce,None,Does not contain
+Peanut Butter,Peanuts,Sugar,Vegetable oil,Salt,Peanuts,Contains
+Chicken Satay,Chicken,None,Peanut oil,"Satay sauce, spices",Peanuts,Contains
+Pesto Chicken,Chicken,None,Olive oil,Pesto sauce,"Pine nuts, Dairy",Contains
+Shrimp Scampi,Shrimp,None,Butter,"Garlic, lemon",Shellfish,Contains
+Garlic Shrimp,Shrimp,None,Olive oil,Garlic,Shellfish,Contains
+Lobster Bisque,Lobster,None,Butter,"Cream, brandy","Shellfish, Dairy",Contains
+Lobster Roll,Lobster,None,Mayonnaise,"Celery, lemon juice","Shellfish, Eggs",Contains
+Soy Milk,Soybeans,Sugar,None,Emulsifiers,Soybeans,Contains
+Tofu Stir-Fry,Tofu,None,Vegetable oil,Soy sauce,Soybeans,Contains
+Miso Soup,Miso paste,None,None,"Tofu, seaweed",Soybeans,Contains
+Wheat Bread,Wheat flour,None,None,Salt,Wheat,Contains
+Zucchini Bread,Zucchini,Sugar,Vegetable oil,Flour,Wheat,Contains
+Oatmeal Raisin Cookies,Oats,Sugar,Butter,Flour,"Wheat, Dairy",Contains
+Pancakes,Flour,Sugar,Butter,Baking powder,"Wheat, Dairy",Contains
+Carrot Cake,Carrots,Sugar,Vegetable oil,Cinnamon,"Wheat, Dairy",Contains
+Tiramisu,Ladyfingers,Sugar,"Mascarpone cheese, coffee liqueur",Cocoa powder,"Wheat, Dairy, Alcohol",Contains 
