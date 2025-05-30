@@ -6,8 +6,9 @@ import 'screens/profile_screen.dart';
 import 'screens/food_scanner_screen.dart';
 import 'screens/symptom_checker_screen.dart';
 import 'screens/history_screen.dart';
+import 'screens/camera_screen.dart';
 import 'services/allergen_database.dart';
-import 'utils/theme.dart';
+import 'utils/app_theme.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -24,6 +25,15 @@ void main() async {
     DeviceOrientation.portraitDown,
   ]);
   
+  // Set system UI overlay style
+  SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(
+    statusBarColor: Colors.transparent,
+    statusBarIconBrightness: Brightness.dark,
+    systemNavigationBarColor: Colors.white,
+    systemNavigationBarIconBrightness: Brightness.dark,
+    statusBarBrightness: Brightness.light,
+  ));
+  
   // Initialize the allergen database
   await AllergenDatabaseService.initialize();
   
@@ -38,13 +48,14 @@ class DrAllergyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Dr.Allergy',
       debugShowCheckedModeBanner: false,
-      theme: AppTheme.radioAppTheme,
+      theme: AppTheme.lightTheme,
       initialRoute: '/',
       routes: {
         '/': (context) => const MainScreen(),
         '/home': (context) => const HomeScreen(),
         '/symptom-checker': (context) => const SymptomCheckerScreen(),
         '/food-scanner': (context) => const FoodScannerScreen(),
+        '/camera': (context) => const CameraScreen(),
         '/history': (context) => const HistoryScreen(),
         '/profile': (context) => const ProfileScreen(),
       },
@@ -65,7 +76,7 @@ class _MainScreenState extends State<MainScreen> {
   final List<Widget> _screens = [
     const HomeScreen(),
     const SymptomCheckerScreen(),
-    const FoodScannerScreen(),
+    const CameraScreen(),
     const HistoryScreen(),
     const ProfileScreen(),
   ];
@@ -79,13 +90,15 @@ class _MainScreenState extends State<MainScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.white,
       body: _screens[_selectedIndex],
       extendBody: true,
       bottomNavigationBar: Container(
         decoration: BoxDecoration(
+          color: Colors.white,
           boxShadow: [
             BoxShadow(
-              color: Colors.black.withOpacity(0.1),
+              color: kBrandColor.withOpacity(0.1),
               blurRadius: 10,
               offset: const Offset(0, -5),
             ),
@@ -100,7 +113,7 @@ class _MainScreenState extends State<MainScreen> {
             type: BottomNavigationBarType.fixed,
             currentIndex: _selectedIndex,
             onTap: _onItemTapped,
-            selectedItemColor: Theme.of(context).colorScheme.secondary,
+            selectedItemColor: kBrandColor,
             unselectedItemColor: Colors.grey,
             backgroundColor: Colors.white,
             elevation: 0,

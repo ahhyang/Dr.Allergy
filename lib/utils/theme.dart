@@ -307,12 +307,12 @@ class AppTheme {
     ),
 
     // Slider theme
-    sliderTheme: SliderThemeData(
-      activeTrackColor: const Color(0xFF00D1FF),
-      inactiveTrackColor: const Color(0xFF757575),
-      thumbColor: const Color(0xFF00D1FF),
+    sliderTheme: const SliderThemeData(
+      activeTrackColor: Color(0xFF00D1FF),
+      inactiveTrackColor: Color(0xFF757575),
+      thumbColor: Color(0xFF00D1FF),
       trackHeight: 4.0,
-      thumbShape: const RoundSliderThumbShape(enabledThumbRadius: 10.0),
+      thumbShape: RoundSliderThumbShape(enabledThumbRadius: 10.0),
     ),
   );
 }

@@ -276,7 +276,7 @@ class _FoodScannerScreenState extends State<FoodScannerScreen> with SingleTicker
       _animationController.stop();
       setState(() {
         _isLoading = false;
-        _analysisResult = "Error analyzing food. Please try again later.";
+        // _analysisResult = "Error analyzing food. Please try again later.";
         _isSafe = false;
       });
     }

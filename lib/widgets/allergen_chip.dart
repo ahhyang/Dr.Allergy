@@ -1,34 +1,71 @@
 import 'package:flutter/material.dart';
+import '../utils/app_theme.dart';
 
 class AllergenChip extends StatelessWidget {
   final String label;
   final VoidCallback onDelete;
-  final Color color;
+  final Color? color;
+  final IconData? icon;
   
   const AllergenChip({
     super.key,
     required this.label,
     required this.onDelete,
-    required this.color,
+    this.color,
+    this.icon,
   });
 
   @override
   Widget build(BuildContext context) {
-    return Chip(
-      label: Text(
-        label,
-        style: const TextStyle(
-          color: Colors.white,
-          fontWeight: FontWeight.bold,
+    final chipColor = color ?? kBrandColor;
+    
+    return Container(
+      margin: const EdgeInsets.only(right: 8, bottom: 8),
+      decoration: BoxDecoration(
+        color: Colors.white,
+        borderRadius: BorderRadius.circular(16),
+        border: Border.all(
+          color: chipColor,
+          width: 1,
         ),
       ),
-      backgroundColor: color,
-      deleteIcon: const Icon(
-        Icons.close,
-        size: 18,
-        color: Colors.white,
+      child: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 2),
+        child: Row(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            if (icon != null) ...[
+              Icon(
+                icon,
+                size: 16,
+                color: chipColor,
+              ),
+              const SizedBox(width: 4),
+            ],
+            Text(
+              label,
+              style: const TextStyle(
+                color: kTextPrimaryColor,
+                fontWeight: FontWeight.w600,
+                fontSize: 14,
+              ),
+            ),
+            const SizedBox(width: 4),
+            InkWell(
+              onTap: onDelete,
+              borderRadius: BorderRadius.circular(20),
+              child: Padding(
+                padding: const EdgeInsets.all(4),
+                child: Icon(
+                  Icons.close,
+                  size: 16,
+                  color: chipColor,
+                ),
+              ),
+            ),
+          ],
+        ),
       ),
-      onDeleted: onDelete,
     );
   }
 }
